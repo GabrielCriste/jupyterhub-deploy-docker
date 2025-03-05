@@ -59,3 +59,21 @@ c.NativeAuthenticator.open_signup = True
 admin = os.environ.get("JUPYTERHUB_ADMIN")
 if admin:
     c.Authenticator.admin_users = [admin]
+
+# =============================================================================
+# Configuração de Limites de Recursos (CPU e Memória)
+# =============================================================================
+
+# Limite de memória para cada contêiner de usuário (notebook)
+# Exemplo: 4 GB de memória
+c.DockerSpawner.mem_limit = "750G"
+
+# Limite de CPU para cada contêiner de usuário (notebook)
+# Exemplo: 2 núcleos de CPU
+c.DockerSpawner.cpu_limit = 72
+
+# Opcional: Reserva de memória (garante que o contêiner terá pelo menos essa quantidade)
+c.DockerSpawner.mem_guarantee = "760G"
+
+# Opcional: Reserva de CPU (garante que o contêiner terá pelo menos essa quantidade)
+c.DockerSpawner.cpu_guarantee = 100
